@@ -6,7 +6,6 @@ class Transmission:
         self.magnet = magnet
     
     def startDownload(self):
-        os.system("transmission-cli " + self.magnet)
-        return {"magnet":self.magnet}
-
+        pid = os.spawnlp(os.P_NOWAIT, "transmission-cli", "transmission-cli", "-f", "/home/paulo/Documents/python/TorrentService/killtransmission.sh", self.magnet)
+        return {"magnet":self.magnet, "pid":pid}
 
