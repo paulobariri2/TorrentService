@@ -1,4 +1,16 @@
 import os
+import psutil
+
+def isDownloadRunning(pid):
+    notRunningStatus = [psutil.STATUS_ZOMBIE, psutil.STATUS_DEAD]
+    try:
+        p = psutil.Process(pid)
+        if p.status() in notRunningStatus:
+            return False
+    except (psutil.NoSuchProcess, psutil.ZombieProcess):
+        return False
+    
+    return True
 
 class Transmission:
 
