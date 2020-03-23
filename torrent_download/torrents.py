@@ -7,7 +7,6 @@ import json
 TORRENTSITE = "https://1337x.to%s"
 SEARCHURL = "https://1337x.to/search/%s/%d/"
 KILL_SCRIPT = os.environ['KILL_SCRIPT']
-DOWNLOAD_FOLDER = os.environ['DOWNLOAD_FOLDER']
 
 headers = {
 	"User-Agent": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.3"
@@ -93,5 +92,5 @@ class Transmission:
         self.magnet = magnet
     
     def startDownload(self):
-        pid = os.spawnlp(os.P_NOWAIT, "transmission-cli", "transmission-cli", "-f", os.path.join(KILL_SCRIPT, "killtransmission.sh"), self.magnet)
+        pid = os.spawnlp(os.P_NOWAIT, "transmission-cli", "transmission-cli", "-f", os.path.join(KILL_SCRIPT, "killscript.sh"), self.magnet)
         return {"magnet":self.magnet, "pid":pid}

@@ -8,5 +8,6 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 RUN apt-get update;apt-get install transmission-cli -y
 
 COPY . .
+RUN chmod a+x killscript.sh
 
 CMD ["python3", "run.py"]

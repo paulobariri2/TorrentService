@@ -4,7 +4,9 @@ Service to search and download videos using torrents.
 
 ## Usage
 
-You must install `transmission-cli` to use this service.
+You must install `transmission-cli` to use this service. Also you must define below environment variable.
+
+- `KILL_SCRIPT=<path to killscript.sh folder>`
 
 ### Search torrents
 
