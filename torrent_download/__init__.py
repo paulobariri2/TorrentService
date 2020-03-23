@@ -31,9 +31,6 @@ class DownloadStatus(Resource):
         return status
 
 class SearchTorrents(Resource):
-    #def get(self, searchString):
-        #return searchTorrentsPages(searchString), 200
-
     def get(self, searchString, page=None):
         if page:
             return searchTorrents(searchString, int(page)), 200
