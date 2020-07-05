@@ -5,11 +5,14 @@ from .torrents import isDownloadRunning
 from .torrents import getMagnetLinkFromPage
 from .torrents import searchTorrents
 from .torrents import searchTorrentsPages
-#from flask_cors import CORS
+from flask_cors import CORS
 import requests
+import os
+
+managerUrl = os.environ["TORRENT_MANAGER_URL"]
 
 app = Flask(__name__)
-#CORS(app)
+CORS(app)
 
 api = Api(app)
 
@@ -47,5 +50,5 @@ api.add_resource(SearchTorrents, '/search/<string:searchString>', '/search/<stri
 class TorrentManager:
 
     def updateTorrentAsDone(self, pid):
-        resp = requests.post("http://localhost:8080/torrent/done/" + str(pid))
+        resp = requests.post(managerUrl + "/torrent/done/" + str(pid))
         self.resp = resp
